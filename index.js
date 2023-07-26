@@ -1,5 +1,6 @@
 const express = require("express");
 const rotuerApi = require("./src/router/app.router");
+const { errorHandler } = require("./src/middleware");
 
 const app = express();
 const port = 3001;
@@ -14,3 +15,6 @@ app.listen(port, () => {
 })
 
 rotuerApi(app);
+
+app.use(errorHandler)
+

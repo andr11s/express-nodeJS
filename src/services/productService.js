@@ -16,6 +16,13 @@ class ProductsService{
   }
 
   find(){
+    return new Promise((resolve, reject) =>{
+      setTimeout(() => {
+        resolve(this.products)
+      }, 4000);
+
+    })
+
     return this.products;
   }
 

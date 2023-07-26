@@ -1,17 +1,24 @@
 
 const products = [];
-const ProductsService = require("../../services/productService");
+const ProductsService = require("../services/productService");
 const services = new ProductsService();
 
-getProducts = (request, response) => {
+async function getProducts(request, response, next){
   let query = {};
-
+  console.log(next);
   let querys = request.query;
   query = {...querys};
 
   console.log(query);
-  const products = services.find();
-  response.json(products)
+  try {
+ const products = await services.finddd();
+    response.json(products)
+
+  } catch (error) {
+    next(error);
+  }
+
+
 }
 
 getProductId = (request, response) => {
