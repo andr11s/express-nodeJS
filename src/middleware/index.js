@@ -1,10 +1,10 @@
-function errorHandler(error, request, response, next) {
+function errorHandler (error, request, response, next) {
   response.status(500).json({
     message: error.message,
     stack: error.stack
   })
 }
 
-module.exports  = {
+module.exports = {
   errorHandler
 }
