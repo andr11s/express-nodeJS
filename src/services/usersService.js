@@ -1,15 +1,31 @@
 const { createHash } = require('./pass-hash')
+const users = []
 
 async function create (payload) {
   const newPassword = await createHash(payload.password)
   const newUser = {
-    payload,
+    name: payload.name,
+    email: payload.email,
     password: newPassword
   }
-
+  users.push(newUser)
   return newUser
 }
 
+function getUsers () {
+  return users
+}
+
+function getUserByEmail (email) {
+  const user = users.find((user) => user.email === email)
+
+  if (!user) throw new Error('the user not found')
+
+  return user
+}
+
 module.exports = {
-  create
+  create,
+  getUserByEmail,
+  getUsers
 }

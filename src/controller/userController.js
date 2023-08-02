@@ -1,14 +1,7 @@
-const { create } = require('../services/usersService')
+const { create, getUsers } = require('../services/usersService')
 
-function getUsers (request, response) {
-  const users = [
-    {
-      name: 'a'
-    },
-    {
-      name: 'b'
-    }
-  ]
+function getUsersController (request, response) {
+  const users = getUsers()
 
   response.json(users)
 }
@@ -22,6 +15,6 @@ async function createUser (request, response) {
 }
 
 module.exports = {
-  getUsers,
+  getUsersController,
   createUser
 }
