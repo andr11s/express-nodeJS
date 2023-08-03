@@ -6,7 +6,8 @@ async function create (payload) {
   const newUser = {
     name: payload.name,
     email: payload.email,
-    password: newPassword
+    password: newPassword,
+    roles: payload.roles
   }
   users.push(newUser)
   return newUser
